@@ -1,0 +1,12 @@
+<h2> Click here to pay </h2>
+
+<p> Thanks for booking a room using cAIRBNB. These are your reservation details:
+
+      Reservation start date: <%= @reservation.start_date %>
+      Reservation end date: <%= @reservation.end_date %>
+      Reservation address: <%= @reservation.room.address %>
+      Day rate: <%= @reservation.price %>
+
+</p>
+
+<%= render 'form' %>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi <%= @user.fullname %></h1>
+    <p>
+      Thanks for being a host on cAIRBNB! You have received a booking from <%= @reservation.user.fullname %>! These are the booking details:
+
+      Listing id: <%= @reservation.room.id %>
+      Reservation start date: <%= @reservation.start_date %>
+      Reservation end date: <%= @reservation.end_date %>
+      Day rate: <%= @reservation.price %>
+
+    </p>
+  </body>
+</html>

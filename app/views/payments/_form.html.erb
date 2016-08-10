@@ -1,0 +1,17 @@
+<%= form_tag("/reservations/#{@reservation.id}/payments", method: "post") do %>
+
+  <div id="payment-form"></div>
+  <input type="submit" value="Pay now">
+<% end %>
+
+<script src="https://js.braintreegateway.com/js/braintree-2.27.0.min.js"></script>
+<script>
+// We generated a client token for you so you can test out this code
+// immediately. In a production-ready integration, you will need to
+// generate a client token on your server (see section below).
+var clientToken = "<%=@client_token %>";
+braintree.setup(clientToken, "dropin", {
+  container: "payment-form"
+});
+</script>
+
