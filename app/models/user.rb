@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
 
   validates :fullname, presence: true, length: {maximum: 50}
 
-  has_many :rooms
-  has_many :reservations
-  has_many :payments
+  has_many :rooms, dependent: :destroy
+  has_many :reservations, dependent: :destroy
+  has_many :payments, dependent: :destroy
 
   mount_uploaders :avatars, AvatarUploader
 

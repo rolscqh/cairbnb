@@ -11,26 +11,24 @@
 			<div class="panel-heading">
 				Your Reservations
 			</div>
-			<div class="panel-body">
+			<table>
+				<tr>
+					<th>start date</th>
+					<th>end date</th>
+					<th>address</th>
+					<th>total price</th>
+				</tr>
+				
 				<% @reservations.each do |reservation| %>
-						<div class="row">
-							<div class="col-md-2">
-								<%= reservation.start_date.strftime('%v') %>
-							</div>	
-							<div class="col-md-6">
-								<%= link_to room_path(reservation.room) do %>
-								<% end %>
-							</div>	
-	
-							<div class="col-md-2 right">
-								<h4>$<%= reservation.total %></h4>
-							</div>	
-						</div>
-						<hr>
-
+				<tr>
+					<td><%= reservation.start_date.strftime('%v') %></td>
+					<td><%= reservation.end_date.strftime('%v') %></td>
+					<td><%= reservation.room.address %></td>
+					<td>$<%= reservation.total %></td>
+					<td><%= link_to "Cancel Booking", reservation, method: :delete %></td>
+					</tr>
 				<% end %>
-
-			</div>
+			</table>
 		</div>
 	</div>
 </div>

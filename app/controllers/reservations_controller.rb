@@ -35,6 +35,12 @@ class ReservationsController < ApplicationController
 		@reservations = current_user.reservations
 	end
 
+	def destroy
+		@reservation = Reservation.find(params[:id])
+		@reservation.destroy
+		redirect_to your_reservations_path
+	end
+
 	private
 		def is_conflict(start_date, end_date)
 			room = Room.find(params[:room_id])
