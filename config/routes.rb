@@ -15,6 +15,10 @@ Rails.application.routes.draw do
 
   resources :rooms do
     resources :reservations, only: [:create]
+    collection do 
+      post :import
+      get :autocomplete # <= add this line
+    end
   end
 
   resources :reservations, only: [:destroy]

@@ -3,7 +3,30 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def index
-    @rooms = Room.all
+      @rooms = Room.all
+      if params[:query].present?
+      @rooms = Room.search(params[:query])
+      else
+        @rooms = []
+      end
+  end
+
+  def autocomplete
+    listing_name = Room.search(params[:query], {
+      fields: ["listing_name^5"],
+      limit: 10,
+      load: false,
+      misspellings: {below: 5}
+    }).map {|room| {title: room.listing_name, value: room.id}}
+
+    address = Room.search(params[:query], {
+      fields: ["address"],
+      limit: 10,
+      load: false,
+      misspellings: {below: 5}
+    }).map {|room| {title: room.address, value: room.id}}
+
+    render json: listing_name + address
   end
 
   def show

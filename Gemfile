@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'searchkick'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -56,6 +57,8 @@ gem 'jquery-ui-rails'
 gem 'sidekiq'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem "braintree"
+gem 'twitter-typeahead-rails'
+gem 'puma'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
@@ -63,5 +66,10 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  group :production do
+  	gem "skylight"
+  	gem 'rails_12factor'
+  end
 end
 

@@ -19,3 +19,5 @@
 //= require bootstrap-sprockets
 //= require filterrific/filterrific-jquery
 //= require braintree 
+//= require twitter/typeahead
+//= require rooms
